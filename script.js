@@ -5,7 +5,7 @@ const navMenu = document.getElementById('navMenu');
 const navLinks = document.querySelectorAll('.nav-link');
 const scrollTopBtn = document.getElementById('scrollTop');
 const faqItems = document.querySelectorAll('.faq-item');
-const statNumbers = document.querySelectorAll('.stat-number');
+
 
 // Mobile Menu Toggle
 navToggle.addEventListener('click', () => {
@@ -111,23 +111,6 @@ faqItems.forEach(item => {
     });
 });
 
-// Counter Animation for Stats
-function animateCounter(element, target, duration = 2000) {
-    const start = 0;
-    const increment = target / (duration / 16);
-    let current = start;
-
-    const timer = setInterval(() => {
-        current += increment;
-        if (current >= target) {
-            element.textContent = target;
-            clearInterval(timer);
-        } else {
-            element.textContent = Math.floor(current);
-        }
-    }, 16);
-}
-
 // Intersection Observer for animations
 const observerOptions = {
     threshold: 0.2,
@@ -138,15 +121,7 @@ const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add('visible');
-
-            // Animate stats when hero section is visible
-            if (entry.target.classList.contains('hero')) {
-                statNumbers.forEach(stat => {
-                    const target = parseInt(stat.getAttribute('data-target'));
-                    animateCounter(stat, target);
-                });
-            }
-
+               
             observer.unobserve(entry.target);
         }
     });
