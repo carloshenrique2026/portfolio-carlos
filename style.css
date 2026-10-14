@@ -506,8 +506,13 @@ section {
 
 .hero-buttons {
     display: flex;
+    flex-direction: column;
     gap: var(--spacing-md);
     margin-bottom: var(--spacing-2xl);
+}
+
+.hero-buttons .btn {
+    width: 100%;
 }
 
 .hero-buttons .btn-primary {
